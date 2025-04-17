@@ -1,47 +1,195 @@
-{ "games": [
+
+
+{ 
+  "games": [
  {
       "id": 1,
       "Title": "The Legend of Zelda: Breath of the Wild",
-      "Genres": ["Adventure", "Action", "Open World"],
-      "Release Date": "2017-03-03",
-      "Median Score": 97,
+      "Genres": "Adventure",
+      "Release_Date": "2017-03-03",
+      "Rate": 97,
       "Description": "An open-world adventure game where players explore the vast kingdom of Hyrule to defeat Calamity Ganon.",
-      "Image": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_656/b_white/f_auto/q_auto/ncom/software/switch/70010000000025/7137262b5a64d921e193653f8aa0b722925abc5680380ca0e18a5cfd91697f58"
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/57400/library_600x900.jpg?t=1741278088181"
     },
     {
       "id": 2,
       "Title": "Elden Ring",
-      "Genres": ["Action", "RPG", "Fantasy"],
-      "Release Date": "2022-02-25",
-      "Median Score": 96,
+      "Genres": "Action",
+      "Release_Date": "2022-02-25",
+      "Rate": 96,
       "Description": "An action RPG set in a vast fantasy world created by George R.R. Martin and Hidetaka Miyazaki.",
-      "Image": "https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/aGhopp3MHppi7aoNY74a3CuR.png"
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/431960/library_600x900.jpg?t=1741278088181"
     },
     {
       "id": 3,
       "Title": "Cyberpunk 2077",
-      "Genres": ["RPG", "Sci-Fi", "Open World"],
-      "Release Date": "2020-12-10",
-      "Median Score": 86,
+      "Genres" :"Open World",
+      "Release_Date": "2020-12-10",
+      "Rate": 86,
       "Description": "An open-world RPG set in the dystopian Night City, where players assume the role of V, a mercenary.",
-      "Image": "https://image.api.playstation.com/vulcan/ap/rnd/202009/2519/TuYdQ8fWiKdIPWSTF4d7wLBd.png"
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1245620/library_600x900.jpg?t=1741278088181"
     },
     {
        "id":4,
       "Title": "God of War Ragnarök",
-      "Genres": ["Action", "Adventure", "Mythology"],
-      "Release Date": "2022-11-09",
-      "Median Score": 94,
+      "Genres": "Adventure",
+      "Release_Date": "2022-11-09",
+      "Rate": 94,
       "Description": "A continuation of Kratos' and Atreus' journey through the Norse realms, facing the end of the world.",
-      "Image": "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png"
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/2310/library_600x900.jpg?t=1741278088181"
     },
     {
       "id":5,
-      "Title": "Hollow Knight",
-      "Genres": ["Metroidvania", "Indie", "Platformer"],
-      "Release Date": "2017-02-24",
-      "Median Score": 90,
-      "Description": "An atmospheric 2D metroidvania where players explore the ancient and mysterious kingdom of Hallownest.",
-      "Image": "https://cdn.akamai.steamstatic.com/steam/apps/367520/header.jpg"
+      "Title": "God of War",
+      "Genres": "Metroidvania",
+      "Release_Date": "2017-02-24",
+      "Rate": 90,
+      "Description": "An God of War 2D metroidvania where players explore the ancient and mysterious kingdom of Hallownest.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1593500/library_600x900.jpg?t=1741278088181"
     }
+    ,
+    {
+      "id":6,
+      "Title": "Hollow Knight",
+      "Genres": "Metroidvania",
+      "Release_Date": "2017-02-24",
+      "Rate": 90,
+      "Description": "An action-adventure game where players explore the ancient and mysterious kingdom of Hallownest.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/367520/library_600x900.jpg?t=1741278088181"
+    } ,
+    {
+      "id":7,
+      "Title": "The Witcher 3: Wild Hunt",
+      "Genres": "RPG",
+      "Release_Date": "2015-05-19",
+      "Rate": 93,
+      "Description": "An open-world RPG where players control Geralt of Rivia, a monster hunter searching for his adopted daughter.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/292030/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":8,
+      "Title": "Dark Souls III",
+      "Genres": "Action",
+      "Release_Date": "2016-03-24",
+      "Rate": 89,
+      "Description": "An action RPG known for its challenging gameplay and intricate world design.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/374320/library_600x900.jpg?t=1741278088181"
+    }
+    ,
+    {
+      "id":9,
+      "Title": "Sekiro: Shadows Die Twice",
+      "Genres": "Action",
+      "Release_Date": "2019-03-22",
+      "Rate": 91,
+      "Description": "An action-adventure game set in Sengoku-era Japan, where players control a shinobi named Wolf.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/814380/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":10,
+      "Title": "Hades",
+      "Genres": "Roguelike",
+      "Release_Date": "2020-09-17",
+      "Rate": 93,
+      "Description": "A roguelike dungeon crawler where players control Zagreus, the son of Hades, as he attempts to escape the Underworld.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1145360/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":11,
+      "Title": "DOOM Eternal",
+      "Genres": "First-Person Shooter",
+      "Release_Date": "2020-03-20",
+      "Rate": 89,
+      "Description": "A fast-paced first-person shooter where players control the Doom Slayer to battle demons.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/782330/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":12,
+      "Title": "Resident Evil Village",
+      "Genres": "Survival Horror",
+      "Release_Date": "2021-05-07",
+      "Rate": 84,
+      "Description": "A survival horror game where players control Ethan Winters as he searches for his kidnapped daughter.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1196590/library_600x900.jpg?t=1741278088181"
+    }
+    ,
+    {
+      "id":13,
+      "Title": "Final Fantasy VII Remake",
+      "Genres": "RPG",
+      "Release_Date": "2020-04-10",
+      "Rate": 87,
+      "Description": "A reimagining of the classic RPG, focusing on the first part of the original game's story.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1151640/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":14,
+      "Title": "Persona 5 Royal",
+      "Genres": "RPG",
+      "Release_Date": "2020-10-21",
+      "Rate": 95,
+      "Description": "An enhanced version of the original Persona 5, featuring new characters and story elements.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1115680/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":15,
+      "Title": "Monster Hunter: World",
+      "Genres": "Action",
+      "Release_Date": "2018-01-26",
+      "Rate": 90,
+      "Description": "An action RPG where players hunt down massive monsters in a living ecosystem.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/582010/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":16,
+      "Title": "Overwatch",
+      "Genres": "First-Person Shooter",
+      "Release_Date": "2016-05-24",
+      "Rate": 91,
+      "Description": "A team-based multiplayer first-person shooter featuring a diverse cast of characters.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/238960/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":17,
+      "Title": "Apex Legends",
+      "Genres": "Battle Royale",
+      "Release_Date": "2019-02-04",
+      "Rate": 89,
+      "Description": "A free-to-play battle royale game set in the Titanfall universe.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1172470/library_600x900.jpg?t=1741278088181"
+    }
+    ,
+    {
+      "id":18,
+      "Title": "Fortnite",
+      "Genres": "Battle Royale",
+      "Release_Date": "2017-07-25",
+      "Rate": 88,
+      "Description": "A free-to-play battle royale game where players build structures and fight to be the last one standing.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/246320/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":19,
+      "Title": "Genshin Impact",
+      "Genres": "Action",
+      "Release_Date": "2020-09-28",
+      "Rate": 90,
+      "Description": "An open-world action RPG set in the fantasy world of Teyvat, featuring gacha mechanics.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/1440010/library_600x900.jpg?t=1741278088181"
+    },
+    {
+      "id":20,
+      "Title": "Stardew Valley",
+      "Genres": "Simulation",
+      "Release_Date": "2016-02-26",
+      "Rate": 89,
+      "Description": "A farming simulation game where players manage a farm and build relationships with villagers.",
+      "Image": "https://steamcdn-a.akamaihd.net/steam/apps/413150/library_600x900.jpg?t=1741278088181"
+    }
+     
+
+
+
   ]}
+
+  
