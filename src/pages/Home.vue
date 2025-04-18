@@ -1,5 +1,5 @@
 <template>
-    <div class="container my-5">
+  <div class="container my-5">
     <div class="row align-items-center wrapper">
       <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
         <h1>End Game</h1>
@@ -24,19 +24,19 @@
         </div>
       </div>
     </div>
+
     <div class="hot-games-section">
-    <h2>🔥 Top Rating Games 🔥</h2>
-    <p>Top-rated games in recent years</p>
-    <div class="games-container">
-      <div v-for="(game, index) in games" :key="index" class="game-card">
-        <img :src="game.Image" :alt="game.Title" />
-        <h3>{{ game.Title }}</h3>
-        <span>⭐ {{ game.Rate }}</span>
+      <h2>🔥 Top Rating Games 🔥</h2>
+      <p>Top-rated games in recent years</p>
+      <div class="games-container">
+        <div v-for="(game, index) in games" :key="index" class="game-card">
+          <img :src="game.Image" :alt="game.Title" />
+          <h3>{{ game.Title }}</h3>
+          <span>⭐ {{ game.Rate }}</span>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-
 </template>
 
 <script>
@@ -48,13 +48,13 @@ export default {
   setup() {
     const games = ref([]);
     const rotation = ref(0);
-    const radius = 150; 
+    const radius = 150;
 
     const fetchGames = async () => {
       try {
-          const response = await axios.get('http://localhost:3000/games');
-          const TopRatingGames=response.data.filter((img) => img.Rate > 90 );
-          games.value = TopRatingGames.slice(0,7)
+        const response = await axios.get('http://localhost:3000/games');
+        const TopRatingGames = response.data.filter((img) => img.Rate > 90);
+        games.value = TopRatingGames.slice(0, 7);
       } catch (error) {
         console.error('Error fetching images:', error);
       }
@@ -72,8 +72,8 @@ export default {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        marginLeft: '-15px', 
-        marginTop: '-22.5px', 
+        marginLeft: '-15px',
+        marginTop: '-22.5px',
       };
     };
 
@@ -81,7 +81,7 @@ export default {
       fetchGames();
       setInterval(() => {
         rotation.value += 1;
-      }, 30); 
+      }, 30);
     });
 
     return {
@@ -94,7 +94,6 @@ export default {
 </script>
 
 <style>
-
 * {
   margin: 0;
   padding: 0;
@@ -159,8 +158,6 @@ button {
   position: relative;
 }
 
-
-
 .circular-container {
   width: 200px;
   height: 200px;
@@ -187,21 +184,34 @@ button {
   z-index: 2;
 }
 
+@media (max-width: 768px) {
+  .circular-container {
+    display: none;
+  }
+  .games-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 1.5rem;
+}
+
+
+  
+}
+
+
+
 
 .cards-container {
   display: flex;
   flex-direction: row;
-  overflow-x: auto; 
-}
-.cards-container {
-
-  display: flex;
+  overflow-x: auto;
   flex-wrap: wrap;
   justify-content: left;
   column-gap: 60px;
-  row-gap : 40px;
+  row-gap: 40px;
   padding: 20px;
-
 }
 
 .card {
@@ -210,13 +220,11 @@ button {
   height: 310px !important;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-
   border-radius: 12px;
   overflow: hidden;
   color: white !important;
   transition: transform 0.3s ease;
 }
-
 
 .card-image {
   width: 100%;
@@ -228,11 +236,9 @@ button {
   position: relative;
   width: 100%;
   height: 20px;
-
   color: rgb(255, 255, 255) !important;
   padding: 10px;
   box-sizing: border-box;
-
   bottom: 0;
 }
 
@@ -268,9 +274,7 @@ button {
 .games-container {
   display: flex;
   flex-direction: row;
-  overflow-x: auto; 
   gap: 1.5rem;
-  
 }
 
 .game-card {
@@ -279,7 +283,6 @@ button {
   height: 310px !important;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-
   border-radius: 12px;
   overflow: hidden;
   color: white !important;
@@ -289,7 +292,6 @@ button {
 .game-card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(3, 4, 32, 0.6);
-
 }
 
 .game-card img {
