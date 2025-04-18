@@ -23,7 +23,7 @@
     {
       "id": 3,
       "Title": "Cyberpunk 2077",
-      "Genres" :"Open World",
+      "Genres" :"Role playing (RPG)",
       "Release_Date": "2020-12-10",
       "Rate": 86,
       "Description": "An open-world RPG set in the dystopian Night City, where players assume the role of V, a mercenary.",
@@ -32,7 +32,7 @@
     {
        "id":4,
       "Title": "God of War Ragnarök",
-      "Genres": "Adventure",
+      "Genres": "Action",
       "Release_Date": "2022-11-09",
       "Rate": 94,
       "Description": "A continuation of Kratos' and Atreus' journey through the Norse realms, facing the end of the world.",
@@ -41,7 +41,7 @@
     {
       "id":5,
       "Title": "God of War",
-      "Genres": "Metroidvania",
+      "Genres": "Action",
       "Release_Date": "2017-02-24",
       "Rate": 90,
       "Description": "An God of War 2D metroidvania where players explore the ancient and mysterious kingdom of Hallownest.",
@@ -51,7 +51,7 @@
     {
       "id":6,
       "Title": "Hollow Knight",
-      "Genres": "Metroidvania",
+      "Genres": "Platformer",
       "Release_Date": "2017-02-24",
       "Rate": 90,
       "Description": "An action-adventure game where players explore the ancient and mysterious kingdom of Hallownest.",
@@ -60,7 +60,7 @@
     {
       "id":7,
       "Title": "The Witcher 3: Wild Hunt",
-      "Genres": "RPG",
+      "Genres": "Role playing (RPG)",
       "Release_Date": "2015-05-19",
       "Rate": 93,
       "Description": "An open-world RPG where players control Geralt of Rivia, a monster hunter searching for his adopted daughter.",
@@ -79,7 +79,7 @@
     {
       "id":9,
       "Title": "Sekiro: Shadows Die Twice",
-      "Genres": "Action",
+      "Genres": "Hack and Slash/Beat 'em up",
       "Release_Date": "2019-03-22",
       "Rate": 91,
       "Description": "An action-adventure game set in Sengoku-era Japan, where players control a shinobi named Wolf.",
@@ -88,7 +88,7 @@
     {
       "id":10,
       "Title": "Hades",
-      "Genres": "Roguelike",
+      "Genres": "RPG",
       "Release_Date": "2020-09-17",
       "Rate": 93,
       "Description": "A roguelike dungeon crawler where players control Zagreus, the son of Hades, as he attempts to escape the Underworld.",
@@ -97,7 +97,7 @@
     {
       "id":11,
       "Title": "DOOM Eternal",
-      "Genres": "First-Person Shooter",
+      "Genres": "Shooter",
       "Release_Date": "2020-03-20",
       "Rate": 89,
       "Description": "A fast-paced first-person shooter where players control the Doom Slayer to battle demons.",
@@ -106,7 +106,7 @@
     {
       "id":12,
       "Title": "Resident Evil Village",
-      "Genres": "Survival Horror",
+      "Genres":  "Gore",
       "Release_Date": "2021-05-07",
       "Rate": 84,
       "Description": "A survival horror game where players control Ethan Winters as he searches for his kidnapped daughter.",
@@ -116,7 +116,7 @@
     {
       "id":13,
       "Title": "Final Fantasy VII Remake",
-      "Genres": "RPG",
+      "Genres": "Role playing (RPG)",
       "Release_Date": "2020-04-10",
       "Rate": 87,
       "Description": "A reimagining of the classic RPG, focusing on the first part of the original game's story.",
@@ -125,7 +125,7 @@
     {
       "id":14,
       "Title": "Persona 5 Royal",
-      "Genres": "RPG",
+      "Genres": "Role playing (RPG)",
       "Release_Date": "2020-10-21",
       "Rate": 95,
       "Description": "An enhanced version of the original Persona 5, featuring new characters and story elements.",
@@ -143,7 +143,7 @@
     {
       "id":16,
       "Title": "Overwatch",
-      "Genres": "First-Person Shooter",
+      "Genres": "Shooter",
       "Release_Date": "2016-05-24",
       "Rate": 91,
       "Description": "A team-based multiplayer first-person shooter featuring a diverse cast of characters.",
@@ -152,7 +152,7 @@
     {
       "id":17,
       "Title": "Apex Legends",
-      "Genres": "Battle Royale",
+      "Genres": "Shooter",
       "Release_Date": "2019-02-04",
       "Rate": 89,
       "Description": "A free-to-play battle royale game set in the Titanfall universe.",
@@ -162,7 +162,7 @@
     {
       "id":18,
       "Title": "Fortnite",
-      "Genres": "Battle Royale",
+      "Genres": "Shooter",
       "Release_Date": "2017-07-25",
       "Rate": 88,
       "Description": "A free-to-play battle royale game where players build structures and fight to be the last one standing.",
@@ -171,7 +171,7 @@
     {
       "id":19,
       "Title": "Genshin Impact",
-      "Genres": "Action",
+      "Genres": "Adventure",
       "Release_Date": "2020-09-28",
       "Rate": 90,
       "Description": "An open-world action RPG set in the fantasy world of Teyvat, featuring gacha mechanics.",
