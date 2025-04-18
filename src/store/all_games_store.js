@@ -7,6 +7,8 @@ export const allgamesStore = defineStore('games', {
       allgames: [],
       allgamesLoading: false,
       originalgames: [],
+      favourites: [],
+     
     
     
     }),
@@ -26,6 +28,9 @@ export const allgamesStore = defineStore('games', {
             const data = await response.json();
             console.log(data);
             this.allgames = data;
+
+           
+
             this.originalgames = data;
             console.log(this.allgames);
             this.allgamesLoading = false;
@@ -49,6 +54,34 @@ export const allgamesStore = defineStore('games', {
         }
     )
 }
+
+
+,
+filterByGenre(selectedGenre) {
+  if (!selectedGenre) {
+      this.allgames = this.originalgames;
+      return;
+  }
+
+  this.allgames = this.originalgames.filter((game) => {
+      return game.Genres === selectedGenre;
+  });
+},
+
+toggleFavourite(game) {
+  if (this.isFavourite(game)) {
+    this.favourites = this.favourites.filter(fav => fav.id !== game.id);
+  } else {
+    this.favourites.push(game);
+  }
+},
+
+isFavourite(game) {
+  console.log(this.favourites);
+  return this.favourites.some(fav => fav.id === game.id);
+},
+
+
 
 
 

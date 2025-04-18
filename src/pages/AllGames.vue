@@ -17,24 +17,36 @@
       </div>
 
       <div class="search-tags d-flex flex-wrap mb-4">
-        <span class="tag">Technology</span>
-        <span class="tag">Design</span>
-        <span class="tag">Development</span>
-        <span class="tag">AI</span>
-        <span class="tag">Machine Learning</span>
+        <span class="tag"  @click="changeGenre('Adventure')"> Adventure</span>
+        <span class="tag"  @click="changeGenre('Action')" >Action</span>
+        <span class="tag"   @click="changeGenre('Platformer')">Platformer</span>
+        <span class="tag"  @click="changeGenre('RPG')">RPG</span>
+        <span class="tag"  @click="changeGenre('Shooter')">Shooter</span>
+        <span class="tag"  @click="changeGenre('Gore')">Gore</span>
       </div>
     </div>
 
     <div class="cards-container">
     <div 
       class="card" 
-      v-for="game in allgames" 
+      v-for="game in lazyLoadedGames" 
       :key="game.id"
     >
       <img :src="game.Image" alt="product image" class="card-image">
-      <div class="card-footer">
+      <div class="card-footer  "  >
         <h3 class="card-title">{{ game.Title }}</h3>
+      <div class="card-footer d-flex justify-content-between align-items-center">
         <p class="card-rating">★ {{ game.Rate }}</p>
+        <button 
+            class="fav-btn" 
+            @click="store.toggleFavourite(game)"
+            :class="{'fav-added': store.isFavourite(game)}"
+          >
+            <i class="bi" :class="store.isFavourite(game) ? 'bi-heart-fill' : 'bi-heart'"></i>
+          </button>
+      </div>
+       
+       
       </div>
     </div>
   </div>
@@ -51,17 +63,71 @@
 <script   setup>
 import { storeToRefs } from 'pinia';
 import{allgamesStore} from '../store/all_games_store.js'
-import { onMounted,watch,ref } from 'vue';
+import { onMounted,watch,ref, onUnmounted, computed } from 'vue';
+import {useRoute} from "vue-router";
+import { useRouter } from 'vue-router';
 const store = allgamesStore();
 const { allgames, allgamesLoading } = storeToRefs(store);
+const route = useRoute();
+const router = useRouter();
+//fetch all qureies when it send from Genres page
+const genre = ref(route.query.genre || null);
 
+
+console.log('list from fav:', store.favourites); 
+const itemsToShow = ref(8); 
+const increment = 4; 
+
+const handleScroll = () => {
+  const bottomOfWindow =
+    window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+
+  if (bottomOfWindow && itemsToShow.value < store.allgames.length) {
+    itemsToShow.value += increment;
+    console.log('Loading more games: ', itemsToShow.value);
+  }
+};
 onMounted(() => {
-  store.fetchAllGames();
+  store.fetchAllGames().then(() => {
+    if (genre.value) {
+      store.filterByGenre(genre.value);
+    }
+  });
+
+  window.addEventListener('scroll', handleScroll);
 });
 const searchText = ref('');
 
-watch(searchText, (newValue) => {
-  store.filterGames(newValue);
+watch([searchText  ],([newsearchText ]) => {
+ 
+ 
+
+  store.filterGames(newsearchText);
+ 
+});
+
+
+
+
+watch(() => route.query.genre, (newGenre) => {
+  genre.value = newGenre;
+  store.filterByGenre(newGenre);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+
+const changeGenre = (selectedGenre) => {
+  if (genre.value === selectedGenre) {
+    router.push({ query: {} }); 
+  } else {
+    router.push({ query: { genre: selectedGenre } });
+  }
+};
+
+const lazyLoadedGames = computed(() => {
+  return store.allgames.slice(0, itemsToShow.value);
 });
 
 </script>
@@ -186,7 +252,7 @@ watch(searchText, (newValue) => {
 .card {
   background: transparent !important;
   width: 200px !important;
-  height: 310px !important;
+  height: 330px !important;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
@@ -204,14 +270,14 @@ watch(searchText, (newValue) => {
 
 .card-image {
   width: 100%;
-  height: calc(90% - 40px);
+  height:250px;
   object-fit: cover;
 }
 
 .card-footer {
-  position: relative;
+  position:  relative;
   width: 100%;
-  height: 20px;
+  height: 0px;
 
   color: rgb(255, 255, 255) !important;
   padding: 10px;
@@ -232,4 +298,22 @@ watch(searchText, (newValue) => {
   font-family: sans-serif;
 }
 
+
+
+.fav-btn {
+  background: transparent;
+  border: none;
+  color: #e7eaee;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.fav-btn:hover {
+  color: #ff6b6b;
+}
+
+.fav-added {
+  color: #ff6b6b;
+}
 </style>
