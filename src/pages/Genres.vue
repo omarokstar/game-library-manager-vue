@@ -313,7 +313,8 @@ export default {
 }
 
 .genre-section {
-  background-color: #23232e;
+  background-color:rgba(255, 255, 255, 0.1);
+  ;
   padding: 15px;
   border-radius: 5px;
 }

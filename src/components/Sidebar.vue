@@ -7,7 +7,7 @@
 
       </div>
       <div>
-        <h6 class="text-uppercase text-muted">Explore</h6>
+        <h6 class="text-uppercase">Explore</h6>
         <ul class="list-unstyled">
           <li>
             <router-link to="/all-games" class="text-decoration-none text-light">
@@ -23,7 +23,7 @@
       </div>
       <hr />
       <div>
-        <h6 class="text-uppercase text-muted">Your Games</h6>
+        <h6 class="text-uppercase">Your Games</h6>
         <ul class="list-unstyled">
           <li>
             <router-link to="/favourites" class="text-decoration-none text-light">
@@ -58,7 +58,9 @@
 .sidebar h6 {
     font-size: 0.9rem;
     margin-bottom: 1rem;
-}
+    color:#c1c1c7;
+    font-weight: 700;
+  }
 
 .sidebar ul li {
     margin-bottom: 0.8rem;
