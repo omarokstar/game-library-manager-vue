@@ -1,6 +1,7 @@
 <template>
   <div class="genre-list">
-    <!-- الأبجدية (# و A-Z) -->
+     
+
     <div class="alphabet">
       <span>#</span>
       <span
@@ -13,7 +14,7 @@
       </span>
     </div>
 
-    <!-- قسم A -->
+    
     <h2 id="A">A</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -28,7 +29,7 @@
       </div>
     </div>
 
-    <!-- قسم C -->
+    
     <h2 id="C">C</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -39,7 +40,7 @@
       </div>
     </div>
 
-    <!-- قسم D -->
+    
     <h2 id="D">D</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -49,7 +50,7 @@
       </div>
     </div>
 
-    <!-- قسم E -->
+    
     <h2 id="E">E</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -60,7 +61,7 @@
       </div>
     </div>
 
-    <!-- قسم F -->
+    
     <h2 id="F">F</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -71,7 +72,7 @@
       </div>
     </div>
 
-    <!-- قسم G -->
+   
     <h2 id="G">G</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -82,7 +83,7 @@
       </div>
     </div>
 
-    <!-- قسم H -->
+    
     <h2 id="H">H</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -92,7 +93,7 @@
       </div>
     </div>
 
-    <!-- قسم I -->
+   
     <h2 id="I">I</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -102,7 +103,7 @@
       </div>
     </div>
 
-    <!-- قسم M -->
+   
     <h2 id="M">M</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -114,7 +115,7 @@
       </div>
     </div>
 
-    <!-- قسم N -->
+    
     <h2 id="N">N</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -124,7 +125,7 @@
       </div>
     </div>
 
-    <!-- قسم P -->
+    
     <h2 id="P">P</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -137,7 +138,7 @@
       </div>
     </div>
 
-    <!-- قسم Q -->
+    
     <h2 id="Q">Q</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -147,7 +148,7 @@
       </div>
     </div>
 
-    <!-- قسم R -->
+    
     <h2 id="R">R</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -160,7 +161,7 @@
       </div>
     </div>
 
-    <!-- قسم S -->
+   
     <h2 id="S">S</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -177,7 +178,7 @@
       </div>
     </div>
 
-    <!-- قسم T -->
+    
     <h2 id="T">T</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -188,7 +189,7 @@
       </div>
     </div>
 
-    <!-- قسم U -->
+    
     <h2 id="U">U</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -198,7 +199,7 @@
       </div>
     </div>
 
-    <!-- قسم V -->
+    
     <h2 id="V">V</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -210,7 +211,7 @@
       </div>
     </div>
 
-    <!-- قسم W -->
+    
     <h2 id="W">W</h2>
     <div class="genre-section-wrapper">
       <div class="genre-section">
@@ -251,8 +252,8 @@ export default {
   max-width: 800px;
   margin: 0 auto;
   min-height: 100vh;
+  padding: 20px;
   overflow-y: auto !important;
-  padding-bottom: 20px;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -269,6 +270,7 @@ export default {
 .alphabet {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 20px 0;
   padding: 10px;
@@ -301,22 +303,22 @@ export default {
 
 .genre-section-wrapper {
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .genre-section-wrapper h2 {
   font-size: 24px;
   color: #d2d2d2;
-  position: absolute;
-  top: -30px;
-  left: -40px;
+  position: relative; 
+  margin-bottom: 10px;
+  margin-left: 0;
 }
 
 .genre-section {
-  background-color:rgba(255, 255, 255, 0.1);
-  ;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 5px;
+  width: 100%;
 }
 
 .genre-section ul {
@@ -343,5 +345,72 @@ export default {
   font-size: 12px;
   color: #d2d2d2;
   text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+  .genre-list {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .alphabet {
+    gap: 6px;
+    margin: 10px 0;
+    padding: 5px;
+  }
+
+  .alphabet span {
+    padding: 4px 8px;
+    font-size: 12px;
+    min-width: 18px;
+  }
+
+  .genre-section-wrapper h2 {
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+  .genre-section {
+    padding: 10px;
+  }
+
+  .genre-section li {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .genre-section li .arrow {
+    font-size: 10px;
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .genre-list {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .alphabet {
+    gap: 7px;
+  }
+
+  .alphabet span {
+    font-size: 13px;
+    padding: 5px 9px;
+  }
+
+  .genre-section-wrapper h2 {
+    font-size: 22px;
+  }
+
+  .genre-section {
+    padding: 12px;
+  }
+
+  .genre-section li {
+    font-size: 15px;
+  }
 }
 </style>

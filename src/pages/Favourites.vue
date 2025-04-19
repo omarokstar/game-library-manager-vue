@@ -11,36 +11,33 @@
           </div>
         </div>
 
-        <!-- Search Bar -->
         <div class="search-wrapper flex-grow-1 d-flex align-items-center w-100 mb-4">
-          <input 
-            type="text" 
-            class="form-control search-input p-2" 
-            placeholder="search a game..." 
-            v-model="searchText" 
+          <input
+            type="text"
+            class="form-control search-input p-2"
+            placeholder="search a game..."
+            v-model="searchText"
           />
           <button class="btn search-btn" type="submit">
             <i class="bi bi-search"></i>
           </button>
         </div>
 
-        <!-- Filters -->
         <div class="filters position-relative">
           <select class="dropdown" v-model="selectedCategory">
             <option value="all">All games</option>
             <option value="favorites">Favorites</option>
           </select>
 
-          <!-- Genre Filter Dropdown -->
           <div class="genre-dropdown" ref="genreDropdown">
             <button class="dropdown genre-btn" @click="toggleGenreDropdown">
               Filters
             </button>
             <div v-if="showGenreDropdown" class="genre-list">
               <label v-for="genre in allGenres" :key="genre" class="genre-option">
-                <input 
-                  type="checkbox" 
-                  :value="genre" 
+                <input
+                  type="checkbox"
+                  :value="genre"
                   v-model="selectedGenres"
                 />
                 {{ genre }}
@@ -49,114 +46,112 @@
           </div>
         </div>
 
-        <!-- Games Section -->
         <div v-if="filteredGames.length > 0" class="games-grid">
-          <div v-for="game in filteredGames" :key="game.id" class="game-card">
-            <img :src="game.Image" :alt="game.Title" />
-            <div class="game-info">
-              <h3>{{ game.Title }}</h3>
-              <p>★ {{ game.Rate }}</p>
+          <div v-for="game in filteredGames" :key="game.id" class="card game-card">
+            <img :src="game.Image" class="card-img-top" :alt="game.Title" />
+            <div class="card-body">
+              <h5 class="card-title">{{ game.Title }}</h5>
+              <div class="rating-container">
+                <p class="card-text">★ {{ game.Rate }}</p>
+                <button class="favorite-btn" @click="store.toggleFavourite(game)">
+                  <i :class="store.isFavourite(game) ? 'bi bi-heart-fill' : 'bi bi-heart'"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Empty Library Message -->
         <div v-else class="empty-library">
           <h2>Your favorites is empty</h2>
           <p>You don't have any games in your favorites.</p>
-          <p>Try importing your Steam games or add any game you want from games page.</p>
+          <p>Try adding games to your favorites from the games page.</p>
         </div>
       </div>
     </main>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      searchText: '',
-      selectedCategory: 'all',
-      showGenreDropdown: false,
-      selectedGenres: [],
-      games: [],
-      allGenres: [
-        "Adventure", "Arcade", "Audio Production", "Action", "Animation & Modeling", "Accounting",
-        "Card & Board Game", "Casual", "Design & Illustration", "Early Access", "Education", "Fighting",
-        "Free to Play", "Gore", "Game Development", "Hack and Slash/Beat 'em up", "Indie", "Music", "Moba",
-        "Massively Multiplayer", "Nudity", "Point-and-click", "Platformer", "Puzzle", "Photo Editing", 
-        "Quiz/Trivia", "Racing", "Real Time Strategy (RTS)", "Role playing (RPG)", "RPG", "Shooter",
-        "Simulator", "Sport", "Strategy", "Simulation", "Sports", "Software Training", "Sexual Content",
-        "Turn-based strategy (TBS)", "Tactical", "Utilities", "Visual Novel", "Video Production", "Violent",
-        "Web Publishing"
-      ]
-    };
-  },
-  mounted() {
-    this.fetchGames();
-    document.addEventListener("click", this.handleClickOutside);
-  },
-  beforeUnmount() {
-    document.removeEventListener("click", this.handleClickOutside);
-  },
-  methods: {
-    fetchGames() {
-      fetch('../../db.json')
-        .then(response => response.json())
-        .then(data => {
-          this.games = data.games;
-        })
-        .catch(error => console.error('Error loading games:', error));
-    },
-    toggleGenreDropdown() {
-      this.showGenreDropdown = !this.showGenreDropdown;
-    },
-    handleClickOutside(event) {
-      const dropdown = this.$refs.genreDropdown;
-      if (dropdown && !dropdown.contains(event.target)) {
-        this.showGenreDropdown = false;
-      }
-    }
-  },
-  computed: {
-    filteredGames() {
-      let filtered = this.games;
+<script setup>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { storeToRefs } from 'pinia';
+import { allgamesStore } from '../store/all_games_store.js'; 
 
-      // Filter by category
-      if (this.selectedCategory === 'favorites') {
-        filtered = filtered.filter(game => game.favorite);
-      }
+const store = allgamesStore();
+const { allgames, favourites } = storeToRefs(store);
 
-      // Filter by selected genres
-      if (this.selectedGenres.length > 0) {
-        filtered = filtered.filter(game =>
-          this.selectedGenres.some(genre =>
-            Array.isArray(game.Genres)
-              ? game.Genres.includes(genre) // If Genre is an array
-              : game.Genres?.split(',').map(g => g.trim()).includes(genre) // If Genre is a string
-          )
-        );
-      }
+const searchText = ref('');
+const selectedCategory = ref('all');
+const showGenreDropdown = ref(false);
+const selectedGenres = ref([]);
+const genreDropdown = ref(null);
 
-      // Filter by search text
-      if (this.searchText) {
-        filtered = filtered.filter(game =>
-          game.Title.toLowerCase().includes(this.searchText.toLowerCase())
-        );
-      }
+const allGenres = ref([
+  "Adventure", "Arcade", "Audio Production", "Action", "Animation & Modeling", "Accounting",
+  "Card & Board Game", "Casual", "Design & Illustration", "Early Access", "Education", "Fighting",
+  "Free to Play", "Gore", "Game Development", "Hack and Slash/Beat 'em up", "Indie", "Music", "Moba",
+  "Massively Multiplayer", "Nudity", "Point-and-click", "Platformer", "Puzzle", "Photo Editing",
+  "Quiz/Trivia", "Racing", "Real Time Strategy (RTS)", "Role playing (RPG)", "RPG", "Shooter",
+  "Simulator", "Sport", "Strategy", "Simulation", "Sports", "Software Training", "Sexual Content",
+  "Turn-based strategy (TBS)", "Tactical", "Utilities", "Visual Novel", "Video Production", "Violent",
+  "Web Publishing"
+]);
 
-      return filtered;
-    }
+onMounted(() => {
+  store.fetchAllGames();
+  document.addEventListener("click", handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
+
+const toggleGenreDropdown = () => {
+  showGenreDropdown.value = !showGenreDropdown.value;
+};
+
+const handleClickOutside = (event) => {
+  if (genreDropdown.value && !genreDropdown.value.contains(event.target)) {
+    showGenreDropdown.value = false;
   }
 };
+
+const filteredGames = computed(() => {
+  let filtered = allgames.value;
+
+
+  if (selectedCategory.value === 'favorites') {
+    filtered = filtered.filter(game => store.isFavourite(game));
+  }
+
+  
+  if (selectedGenres.value.length > 0) {
+    filtered = filtered.filter(game =>
+      selectedGenres.value.some(genre => {
+        const gameGenres = Array.isArray(game.Genres) ? game.Genres : game.Genres?.split(',').map(g => g.trim());
+        return gameGenres?.includes(genre);
+      })
+    );
+  }
+
+  
+  if (searchText.value) {
+    filtered = filtered.filter(game =>
+      game.Title.toLowerCase().includes(searchText.value.toLowerCase())
+    );
+  }
+
+  return filtered;
+});
 </script>
 
 <style scoped>
+
 .library-container {
   width: 100%;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
+  padding: 1rem;
 }
 
 .header h2 {
@@ -178,7 +173,7 @@ export default {
 }
 
 .search-input {
-  background-color:#fff;
+  background-color: #fff;
   flex: 1;
   padding: 0.75rem;
   color: #000;
@@ -264,9 +259,13 @@ export default {
 }
 
 .game-card {
-  padding: 1rem;
+  position: relative;
   width: 200px;
-  text-align: center;
+  border: none;
+  background-color: #1e1e2e;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #fff;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -274,21 +273,39 @@ export default {
   transform: scale(1.05);
 }
 
-.game-card img {
+.card-img-top {
   width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 1rem;
+  height: 250px;
+  object-fit: cover;
 }
 
-.game-info h3 {
-  font-size: 1.2rem;
+.rating-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.favorite-btn {
+  background: transparent;
+  border: none;
+  color: #ff6b81;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 0.75rem;
+}
+
+.card-title {
+  font-size: 0.95rem;
   margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
-.game-info p {
-  font-size: 1.2rem;
-  color: #fff;
-  margin: 0;
+.card-text {
+  font-size: 0.85rem;
+  margin-bottom: 0;
 }
 </style>
