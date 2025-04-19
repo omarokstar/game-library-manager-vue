@@ -74,7 +74,7 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { storeToRefs } from 'pinia';
-import { allgamesStore } from '../store/all_games_store.js'; // Adjust the path if necessary
+import { allgamesStore } from '../store/all_games_store.js'; 
 
 const store = allgamesStore();
 const { allgames, favourites } = storeToRefs(store);
@@ -97,7 +97,7 @@ const allGenres = ref([
 ]);
 
 onMounted(() => {
-  store.fetchAllGames(); // Ensure games are loaded
+  store.fetchAllGames();
   document.addEventListener("click", handleClickOutside);
 });
 
@@ -118,12 +118,12 @@ const handleClickOutside = (event) => {
 const filteredGames = computed(() => {
   let filtered = allgames.value;
 
-  // Filter by selected category (all or favorites)
+
   if (selectedCategory.value === 'favorites') {
     filtered = filtered.filter(game => store.isFavourite(game));
   }
 
-  // Filter by selected genres
+  
   if (selectedGenres.value.length > 0) {
     filtered = filtered.filter(game =>
       selectedGenres.value.some(genre => {
@@ -133,7 +133,7 @@ const filteredGames = computed(() => {
     );
   }
 
-  // Filter by search text
+  
   if (searchText.value) {
     filtered = filtered.filter(game =>
       game.Title.toLowerCase().includes(searchText.value.toLowerCase())
@@ -145,7 +145,7 @@ const filteredGames = computed(() => {
 </script>
 
 <style scoped>
-/* ... (rest of the CSS styles remain the same) ... */
+
 .library-container {
   width: 100%;
   min-height: 100vh;
