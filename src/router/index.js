@@ -4,6 +4,7 @@ import Favourites from "../pages/Favourites.vue";
 import List from "../pages/List.vue";
 import Genres from "../pages/Genres.vue";
 import AllGames from "../pages/AllGames.vue";
+import Game_Detailes from "@/pages/Game_Detailes.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
@@ -11,6 +12,12 @@ const routes = [
   { path: "/list", name: "List", component: List },
   { path: "/genres", name: "Genres", component: Genres },
   { path: "/all-games", name: "AllGames", component: AllGames },
+  
+  {
+    path: "/games-details/:id",
+    name: "Details",
+    component: Game_Detailes
+  }
 ];
 
 const router = createRouter({
