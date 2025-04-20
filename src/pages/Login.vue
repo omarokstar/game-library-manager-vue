@@ -2,7 +2,7 @@
     <div class="login-container d-flex justify-content-center align-items-center vh-100">
       <div class="login-card p-4 rounded shadow">
         <div class="text-center mb-4">
-          <img src="@/assets/image.png" alt="Logo" class="logo-img img-fluid rounded-circle" />
+          <img src="@/assets/image.png" alt="Logo" class="my-image img-fluid rounded-circle" />
         </div>
   
         <h2 class="text-center mb-4">Login</h2>
@@ -37,7 +37,7 @@
         <button class="btn login-btn w-100 mb-3" @click="handleLogin">Login</button>
   
         <p class="text-center">
-          Don't have an account? <router-link to="/signup" class="text-light">Sign Up</router-link>
+          Don't have an account? <router-link to="/sign-up" class="text-light">Sign Up</router-link>
         </p>
       </div>
     </div>
