@@ -7,7 +7,7 @@ import AllGames from "../pages/AllGames.vue";
 import MyList from "@/pages/MyList.vue";
 import SignUp from "../pages/SignUp.vue";
 import Login from "../pages/Login.vue";
-
+import Game_Detailes from "../pages/Game_Detailes.vue";
 const routes = [
   { path: "/", name: "Home", component: Home },
   { path: "/favourites", name: "Favourites", component: Favourites },
