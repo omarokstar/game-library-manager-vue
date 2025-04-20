@@ -7,13 +7,18 @@ import AllGames from "../pages/AllGames.vue";
 import MyList from "@/pages/MyList.vue";
 import SignUp from "../pages/SignUp.vue";
 import Login from "../pages/Login.vue";
-
+import Game_Detailes from "../pages/Game_Detailes.vue";
 const routes = [
   { path: "/", name: "Home", component: Home },
   { path: "/favourites", name: "Favourites", component: Favourites },
   { path: "/list", name: "List", component: List },
   { path: "/genres", name: "Genres", component: Genres },
   { path: "/all-games", name: "AllGames", component: AllGames },
+  {
+    path: "/games-details/:id",
+    name: "Details", 
+    component: Game_Detailes
+  },
   { path: "/sign-up", name: "SignUp", component: SignUp },
   { path: "/login", name: "Login", component: Login },
   {
