@@ -6,6 +6,8 @@ import 'bootstrap';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import Vue3Toastify from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 import "./assets/styles/main.css";
 import { createPinia } from 'pinia'
 import { VueFinalModal, ModalsContainer } from 'vue-final-modal'

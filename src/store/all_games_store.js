@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue';
-
+import { toast } from 'vue3-toastify';
 export const allgamesStore = defineStore('games', {
     state: () => ({ 
         
@@ -8,7 +8,7 @@ export const allgamesStore = defineStore('games', {
       allgamesLoading: false,
       originalgames: [],
       favourites: [],
-     
+      wishlist: [],
     
     
     }),
@@ -68,20 +68,66 @@ filterByGenre(selectedGenre) {
   });
 },
 
+// toggleFavourite(game) {
+
+//   const loggeduser = JSON.parse(localStorage.getItem('loggedInUser'));
+//   if(!loggeduser){
+//     alert("Please login to add to favourites")
+//     return;
+//   }
+//   this.wishlist= loggeduser.wishlist;
+//   console.log("logged user", loggeduser);
+//   if (this.isFavourite(game)) {
+  
+//    this.wishlist = this.wishlist.filter(fav => fav.id !== game.id);
+    
+
+//     // this.favourites = this.favourites.filter(fav => fav.id !== game.id);
+//   } else {
+//     this.wishlist.push(game);
+//     // this.favourites.push(game);
+//   }
+// },
+
+// isFavourite(game) {
+//   console.log(this.favourites);
+//   return this.wishlist.some(fav => fav.id === game.id);
+// },
+
 toggleFavourite(game) {
-  if (this.isFavourite(game)) {
-    this.favourites = this.favourites.filter(fav => fav.id !== game.id);
-  } else {
-    this.favourites.push(game);
+  const loggeduser = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!loggeduser) {
+    toast.error('❌ Please login First to can add to favourites!');
+    return;
   }
+
+  const userKey = `wishlist_${loggeduser.username}`; 
+
+  if (this.isFavourite(game)) {
+    
+    this.wishlist = this.wishlist.filter(fav => fav.id !== game.id);
+    toast.success('🗑️ Game removed  to favourites!');
+  } else {
+    this.wishlist.push(game);
+    toast.success('✔️ Game added to favourites!');
+  }
+
+  
+  localStorage.setItem(userKey, JSON.stringify(this.wishlist));
 },
 
 isFavourite(game) {
-  console.log(this.favourites);
-  return this.favourites.some(fav => fav.id === game.id);
+  return this.wishlist.some(fav => fav.id === game.id);
 },
 
+loadWishlistFromStorage() {
+  const loggeduser = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!loggeduser) return;
 
+  const userKey = `wishlist_${loggeduser.username}`;
+  const savedWishlist = localStorage.getItem(userKey);
+  this.wishlist = savedWishlist ? JSON.parse(savedWishlist) : [];
+},
 
 
 

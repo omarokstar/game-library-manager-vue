@@ -37,7 +37,7 @@
         <button class="btn login-btn w-100 mb-3" @click="handleLogin">Login</button>
   
         <p class="text-center">
-          Don't have an account? <router-link to="/signup" class="text-light">Sign Up</router-link>
+          Don't have an account? <router-link to="/sign-up" class="text-light">Sign Up</router-link>
         </p>
       </div>
     </div>
