@@ -1,6 +1,7 @@
 <template>
   <div class="genre-list">
-    <!-- الأبجدية (# و A-Z) -->
+     <!-- الأبجدية (# و A-Z..) -->
+
     <div class="alphabet">
       <span>#</span>
       <span
