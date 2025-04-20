@@ -68,7 +68,7 @@ const store = allgamesStore();
 const { allgames, allgamesLoading } = storeToRefs(store);
 const route = useRoute();
 const router = useRouter();
-//fetch all qureies when it send from Genres page
+
 const genre = ref(route.query.genre || null);
 
 

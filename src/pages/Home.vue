@@ -30,7 +30,12 @@
       <p>Top-rated games in recent years</p>
       <div class="games-container">
         <div v-for="(game, index) in games" :key="index" class="game-card">
-          <img :src="game.Image" :alt="game.Title" />
+          <img 
+  :src="game.Image" 
+  alt="product image" 
+  class="card-image" 
+  @click="goToDetails(game.id)"
+>
           <h3>{{ game.Title }}</h3>
           <span>⭐ {{ game.Rate }}</span>
         </div>

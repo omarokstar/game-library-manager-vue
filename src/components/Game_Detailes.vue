@@ -1,79 +1,76 @@
 <template>
-    <div v-if="selectedGame" class="details-wrapper">
-      <div class="modal-content">
-        <div class="modal-left">
-          <img :src="selectedGame.Image" class="modal-img-main" />
-          <div class="your-game-section">
-            <h4>Your game</h4>
-            <ul>
-              <li><i class="bi bi-pin-angle"></i> Pinned</li>
-              <li><i class="bi bi-circle"></i> Without a state</li>
-              <li><i class="bi bi-play-circle"></i> Not played</li>
-              <li><i class="bi bi-journal-x"></i> Not in your library</li>
-            </ul>
-            <div class="game-timestamps">
-              <p>In Backlog since July 6, 2024</p> 
-              <p>Updated November 12, 2024</p> 
-              <p><a href="#">Edit missing or wrong data on IGDB</a></p> 
-            </div>
-          </div>
-        </div>
-  
-        <div class="modal-right">
-          <div class="modal-header">
-            <h1>{{ selectedGame.Title }}</h1>
-            <div class="game-meta">
-              <span>2019</span> 
-              <span>★ {{ selectedGame.Rate }}</span>
-              <span>{{ selectedGame.Genres || 'Indie' }}</span> 
-            </div>
+    <div class="details-wrapper">
+      <transition name="fade" v-if="selectedGame">
+        <div class="modal-content">
+          <div class="modal-left">
+            <img :src="selectedGame.Image" class="modal-img-main" />
           </div>
   
-          <div class="action-buttons">
-            <button class="btn-assign-state">Assign a state</button>
-            <button class="btn-fav-modal">
-              <i class="bi bi-heart"></i>
-            </button>
-          </div>
-  
-          <div class="info-section">
-            <h4>General Information</h4>
-            <p>{{ selectedGame.Description || 'Shoot, stab, burn, poison, tear, vaporise, or crush ragdolls in a large open space.' }}</p>
-            <button class="btn-steam"><i class="bi bi-steam"></i> Steam store</button>
-          </div>
-  
-          <div class="scores-section">
-            <h4>Scores</h4>
-            <div class="scores-container">
-              <div class="score-box">
-                <div class="score-value">★ {{ selectedGame.Rate }}</div>
-                <div class="score-label">Median score</div>
-              </div>
-              <div class="score-box score-box-positive">
-                <div class="score-rating">Overwhelmingly Positive</div> 
-                <div class="score-progress">
-                  <div class="progress-bar" :style="{ width: '98%' }"></div>
+          <div class="modal-right">
+            <transition name="slide-top">
+              <div class="modal-header">
+                <h1>{{ selectedGame.Title }}</h1>
+                <div class="game-meta">
+                  <span>2019</span>
+                  <span>★ {{ selectedGame.Rate }}</span>
+                  <span>{{ selectedGame.Genres || 'Indie' }}</span>
                 </div>
-                <div class="score-details">98% of 240.7K</div>
               </div>
-            </div>
-          </div>
+            </transition>
   
-          <div class="genres-release-section">
-            <div>
-              <h4>GENRES</h4>
-              <p>{{ selectedGame.Genres || 'Indie, Action, Casual, Simulation' }}</p>
-            </div>
-            <div>
-              <h4>RELEASE DATE</h4>
-              <p>July 23, 2019</p>
-            </div>
+            <transition name="slide-bottom">
+              <div class="action-buttons">
+                <button class="btn-assign-state">Assign a state</button>
+                <button class="btn-fav-modal">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+            </transition>
+  
+            <transition name="slide-right">
+              <div class="info-section">
+                <h4>General Information</h4>
+                <p>{{ selectedGame.Description || 'Shoot, stab, burn, poison, tear, vaporise, or crush ragdolls in a large open space.' }}</p>
+                <button class="btn-steam"><i class="bi bi-steam"></i> Steam store</button>
+              </div>
+            </transition>
+  
+            <transition name="slide-right">
+              <div class="scores-section">
+                <h4>Scores</h4>
+                <div class="scores-container">
+                  <div class="score-box">
+                    <div class="score-value">★ {{ selectedGame.Rate }}</div>
+                    <div class="score-label">Median score</div>
+                  </div>
+                  <div class="score-box score-box-positive">
+                    <div class="score-rating">Overwhelmingly Positive</div>
+                    <div class="score-progress">
+                      <div class="progress-bar" :style="{ width: '98%' }"></div>
+                    </div>
+                    <div class="score-details">98% of 240.7K</div>
+                  </div>
+                </div>
+              </div>
+            </transition>
+  
+            <transition name="slide-right">
+              <div class="genres-release-section">
+                <div>
+                  <h4>GENRES</h4>
+                  <p>{{ selectedGame.Genres || 'Indie, Action, Casual, Simulation' }}</p>
+                </div>
+                <div>
+                  <h4>RELEASE DATE</h4>
+                  <p>July 23, 2019</p>
+                </div>
+              </div>
+            </transition>
           </div>
         </div>
-      </div>
+      </transition>
+      <div v-else class="loading">Loading game details...</div>
     </div>
-  
-    <div v-else class="loading">Loading game details...</div>
   </template>
   
   <script setup>
@@ -97,32 +94,58 @@
   
   <style scoped>
   .details-wrapper {
-    padding: 20px;
-    background-color: #121212;
-    color: #fff;
+    padding: 50px;
+    background-color: rgb(36, 36, 36);
+    color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .modal-content {
     display: flex;
     gap: 30px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
+    background-color: rgb(10, 10, 10 ,0.8);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
     padding: 20px;
   }
   
-  .modal-left, .modal-right {
+  .modal-left,
+  .modal-right {
     flex: 1;
+  }
+  
+  .modal-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .modal-img-main {
     width: 100%;
-    height: auto;
+    max-width: 400px;
+    max-height: 500px;
     border-radius: 10px;
     object-fit: cover;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.9);
+    animation: imagePop 0.8s ease-out;
+  }
+
+  .modal-img-main:hover {
+    transform: scale( 1.06) rotate(15deg) translateY(10px) !important; 
+    filter: brightness(1.9);
+    transition: transform 0.3s ease;
+  }
+  @keyframes imagePop {
+    0% {
+      transform: scale(0.8) rotate(-5deg);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
   }
   
-  .your-game-section h4,
   .modal-header h1,
   .info-section h4,
   .scores-section h4,
@@ -132,32 +155,8 @@
     color: #ffcc00;
   }
   
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul li {
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .game-timestamps p {
-    margin: 5px 0;
-    font-size: 13px;
-    color: #bbb;
-  }
-  
-  .game-timestamps a {
-    color: #61dafb;
-    text-decoration: underline;
-  }
-  
   .modal-header h1 {
     font-size: 28px;
-    margin-bottom: 10px;
   }
   
   .game-meta span {
@@ -181,13 +180,39 @@
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
   
   .btn-assign-state:hover,
   .btn-fav-modal:hover,
   .btn-steam:hover {
     background-color: #3c4048;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-assign-state::after,
+  .btn-fav-modal::after,
+  .btn-steam::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+  }
+  
+  .btn-assign-state:hover::after,
+  .btn-fav-modal:hover::after,
+  .btn-steam:hover::after {
+    width: 200px;
+    height: 200px;
   }
   
   .scores-container {
@@ -202,6 +227,11 @@
     border-radius: 8px;
     flex: 1;
     text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .score-box:hover {
+    transform: scale(1.05);
   }
   
   .score-box-positive {
@@ -230,6 +260,16 @@
     height: 100%;
     background: #00e676;
     border-radius: 4px;
+    animation: progressFill 1.5s ease-in-out;
+  }
+  
+  @keyframes progressFill {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 98%;
+    }
   }
   
   .score-details {
@@ -248,6 +288,71 @@
     padding: 50px;
     font-size: 20px;
     color: #888;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* Transition Animations */
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+  
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  
+  .slide-right-enter-active,
+  .slide-top-enter-active,
+  .slide-bottom-enter-active {
+    transition: all 0.6s ease;
+  }
+  
+  .slide-right-leave-active,
+  .slide-top-leave-active,
+  .slide-bottom-leave-active {
+    transition: all 0.3s ease;
+  }
+  
+  .slide-right-enter-from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  
+  .slide-right-leave-to {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  
+  .slide-top-enter-from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  
+  .slide-top-leave-to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  
+  .slide-bottom-enter-from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .slide-bottom-leave-to {
+    opacity: 0;
+    transform: translateY(50px);
   }
   </style>
-  
