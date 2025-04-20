@@ -32,7 +32,12 @@
       v-for="game in lazyLoadedGames" 
       :key="game.id"
     >
-      <img :src="game.Image" alt="product image" class="card-image">
+    <img 
+  :src="game.Image" 
+  alt="product image" 
+  class="card-image" 
+  @click="goToDetails(game.id)"
+>
       <div class="card-footer  "  >
         <h3 class="card-title">{{ game.Title }}</h3>
       <div class="card-footer d-flex justify-content-between align-items-center">
@@ -99,7 +104,9 @@ watch([searchText  ],([newsearchText ]) => {
  
 });
 
-
+const goToDetails = (id) => {
+  router.push({ name: "Details", params: { id } });
+};
 
 
 watch(() => route.query.genre, (newGenre) => {
