@@ -251,8 +251,8 @@ export default {
   max-width: 800px;
   margin: 0 auto;
   min-height: 100vh;
+  padding: 20px;
   overflow-y: auto !important;
-  padding-bottom: 20px;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -269,6 +269,7 @@ export default {
 .alphabet {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* عشان الحروف تترتب في أكتر من سطر لو الشاشة صغيرة */
   gap: 8px;
   margin: 20px 0;
   padding: 10px;
@@ -301,22 +302,22 @@ export default {
 
 .genre-section-wrapper {
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .genre-section-wrapper h2 {
   font-size: 24px;
   color: #d2d2d2;
-  position: absolute;
-  top: -30px;
-  left: -40px;
+  position: relative; /* غيرناها من absolute لـ relative عشان تبقى ريسبونسيف */
+  margin-bottom: 10px;
+  margin-left: 0;
 }
 
 .genre-section {
-  background-color:rgba(255, 255, 255, 0.1);
-  ;
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 5px;
+  width: 100%;
 }
 
 .genre-section ul {
@@ -343,5 +344,72 @@ export default {
   font-size: 12px;
   color: #d2d2d2;
   text-decoration: none;
+}
+
+/* Media Queries للشاشات الصغيرة (موبايل: أقل من 768px) */
+@media (max-width: 768px) {
+  .genre-list {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .alphabet {
+    gap: 6px;
+    margin: 10px 0;
+    padding: 5px;
+  }
+
+  .alphabet span {
+    padding: 4px 8px;
+    font-size: 12px;
+    min-width: 18px;
+  }
+
+  .genre-section-wrapper h2 {
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+  .genre-section {
+    padding: 10px;
+  }
+
+  .genre-section li {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .genre-section li .arrow {
+    font-size: 10px;
+  }
+}
+
+/* Media Queries للشاشات المتوسطة (تابلت: بين 768px و1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .genre-list {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .alphabet {
+    gap: 7px;
+  }
+
+  .alphabet span {
+    font-size: 13px;
+    padding: 5px 9px;
+  }
+
+  .genre-section-wrapper h2 {
+    font-size: 22px;
+  }
+
+  .genre-section {
+    padding: 12px;
+  }
+
+  .genre-section li {
+    font-size: 15px;
+  }
 }
 </style>
