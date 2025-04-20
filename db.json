@@ -183,31 +183,21 @@
   ],
   "lists": [
     {
-      "id": "1",
-      "name": "Wishlist",
-      "description": "Games I want to try",
-      "games": [
-        20
-      ]
-    },
-    {
-      "id": "1383",
-      "name": "waeaws",
-      "description": "dasdasdasdas",
-      "games": []
-    },
-    {
-      "id": "6786",
-      "name": "asdasd",
-      "description": "asdasdas",
-      "games": []
-    },
-    {
       "id": "691c",
       "name": "ahmed mohamed",
       "description": "my fav games",
       "games": [
-        "3"
+        "3",
+        "1"
+      ]
+    },
+    {
+      "id": "b1b3",
+      "name": "sensonsy",
+      "description": "assadas",
+      "games": [
+        "1",
+        "5"
       ]
     }
   ]

@@ -76,6 +76,7 @@
         confirmPassword: "",
         message: "",
         messageType: "", 
+        wishlist: [],
       };
     },
     methods: {
@@ -111,6 +112,7 @@
           username: this.username,
           email: this.email,
           password: this.password,
+          wishlist:this.wishlist
         };
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
