@@ -2,7 +2,7 @@
     <div class="signup-container d-flex justify-content-center align-items-center vh-100">
       <div class="signup-card p-4 rounded shadow">
         <div class="text-center mb-4">
-          <img src="@/assets/image.png" alt="Logo" class="logo-img img-fluid rounded-circle" />
+          <img src="@/assets/image.png" alt="Logo" class="my-image img-fluid rounded-circle" />
         </div>
   
         <h2 class="text-center mb-4">Sign Up</h2>
