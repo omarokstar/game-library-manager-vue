@@ -31,6 +31,7 @@
       class="card" 
       v-for="game in lazyLoadedGames" 
       :key="game.id"
+      
     >
     <img 
   :src="game.Image" 
@@ -39,7 +40,9 @@
   @click="goToDetails(game.id)"
 >
       <div class="card-footer  "  >
-        <h3 class="card-title">{{ game.Title }}</h3>
+       
+  <h3 class="card-title">{{ game.Title }}</h3>
+
       <div class="card-footer d-flex justify-content-between align-items-center">
         <p class="card-rating">★ {{ game.Rate }}</p>
         <button 
@@ -55,10 +58,12 @@
       </div>
     </div>
   </div>
+
     
   </div>
 </template>
 <script   setup>
+import Game_Detailes from './Game_Detailes.vue';
 import { storeToRefs } from 'pinia';
 import{allgamesStore} from '../store/all_games_store.js'
 import { onMounted,watch,ref, onUnmounted, computed } from 'vue';
@@ -75,6 +80,15 @@ const genre = ref(route.query.genre || null);
 console.log('list from fav:', store.favourites); 
 const itemsToShow = ref(8); 
 const increment = 4; 
+
+
+const goToDetails = (id) => {
+  router.push({ name: "Details", params: { id } });
+};
+
+
+
+
 
 const handleScroll = () => {
   const bottomOfWindow =
@@ -104,9 +118,7 @@ watch([searchText  ],([newsearchText ]) => {
  
 });
 
-const goToDetails = (id) => {
-  router.push({ name: "Details", params: { id } });
-};
+
 
 
 watch(() => route.query.genre, (newGenre) => {
@@ -131,7 +143,7 @@ const lazyLoadedGames = computed(() => {
 });
 
 </script>
-<style>
+<style >
 
 .hover-scale:hover {
   transform: scale(1.05);
@@ -316,4 +328,6 @@ const lazyLoadedGames = computed(() => {
 .fav-added {
   color: #ff6b6b;
 }
+
+
 </style>

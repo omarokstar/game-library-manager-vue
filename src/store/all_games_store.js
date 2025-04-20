@@ -13,7 +13,7 @@ export const allgamesStore = defineStore('games', {
     
     }),
     getters: {
-      doubleCount: (state) => state.count * 2,
+      
     },
     actions: {
      async fetchAllGames() {
@@ -80,6 +80,7 @@ isFavourite(game) {
   console.log(this.favourites);
   return this.favourites.some(fav => fav.id === game.id);
 },
+
 
 
 
