@@ -22,18 +22,11 @@
       </div>
 
       <div>
+            <router-link to="/login" class="text-decoration-none text-light">
+              <i class="fas fa-user me-3"></i> login
+            </router-link>
         <h6 class="text-uppercase">Explore</h6>
         <ul class="list-unstyled">
-          <li>
-            <router-link to="/sign-up" class="text-decoration-none text-light">
-              <i class="fas fa-gamepad me-3"></i> sign up
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/login" class="text-decoration-none text-light">
-              <i class="fas fa-gamepad me-3"></i> login
-            </router-link>
-          </li>
           <li>
             <router-link to="/all-games" class="text-decoration-none text-light">
               <i class="fas fa-gamepad me-3"></i> All Games
@@ -117,4 +110,4 @@ onMounted(() => {
   border-radius: 5%;
   background-color: rgb(68, 68, 68);
 }
-</style>
+</style> 
