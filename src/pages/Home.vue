@@ -8,7 +8,10 @@
           saved locally in your browser, without any cookies or trackers.
         </p>
         <p class="text-info mt-3">Popular games in recent years</p>
-        <button class="button">Browse games</button>
+         <router-link to="/all-games">
+          
+        <button  class="button">Browse games</button>
+        </router-link>
       </div>
 
       <div class="col-md-6 d-flex justify-content-center">
@@ -307,7 +310,7 @@ button {
 
 .game-card h3 {
   font-size: 1rem;
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
 }
 
 .game-card span {
