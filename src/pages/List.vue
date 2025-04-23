@@ -224,7 +224,6 @@ function cancelDelete() {
   selectedItem.value = null
 }
 
-// Edit List
 const showEditModal = ref(false)
 const editList = reactive({ id: null, name: "", description: "" })
 
