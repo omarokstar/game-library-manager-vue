@@ -52,6 +52,8 @@
   import { onMounted, computed, ref } from 'vue'
   import { useRoute } from 'vue-router'
   import axios from 'axios'
+  import { toast } from 'vue3-toastify';
+
   
   const route = useRoute()
   
@@ -98,6 +100,8 @@
   
   const addToList = async (game) => {
     const listId = selectedList.value?.id
+    if(  selectedList.value.games.includes(game.id)){
+    toast.error('❌ Error adding game to list: you added this game before !"')};
     if (listId && game.id) {
       try {
         await axios.patch(`http://localhost:3000/lists/${listId}`, {

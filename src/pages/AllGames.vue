@@ -111,9 +111,6 @@ onMounted(() => {
 const searchText = ref('');
 
 watch([searchText  ],([newsearchText ]) => {
- 
- 
-
   store.filterGames(newsearchText);
  
 });

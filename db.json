@@ -182,22 +182,6 @@
     }
   ],
   "lists": [
-    {
-      "id": "691c",
-      "name": "ahmed mohamed",
-      "description": "my fav games",
-      "games": [
-        "3",
-        "1"
-      ]
-    },
-    {
-      "id": "af3e",
-      "name": "adsad",
-      "description": "asdasdasd",
-      "games": [
-        "10"
-      ]
-    }
+  
   ]
 }
