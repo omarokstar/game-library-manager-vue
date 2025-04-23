@@ -106,7 +106,7 @@ toggleFavourite(game) {
   if (this.isFavourite(game)) {
     
     this.wishlist = this.wishlist.filter(fav => fav.id !== game.id);
-    toast.success('🗑️ Game removed  to favourites!');
+    toast.success('🗑️ Game removed  from favourites!');
   } else {
     this.wishlist.push(game);
     toast.success('✔️ Game added to favourites!');
@@ -128,13 +128,6 @@ loadWishlistFromStorage() {
   const savedWishlist = localStorage.getItem(userKey);
   this.wishlist = savedWishlist ? JSON.parse(savedWishlist) : [];
 },
-
-
-
-
-
-
-
 
     },
 

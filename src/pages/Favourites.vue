@@ -282,11 +282,12 @@ const filteredGames = computed(() => {
 .rating-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 10px;
 }
 
 .favorite-btn {
+  
   background: transparent;
   border: none;
   color: #ff6b81;
