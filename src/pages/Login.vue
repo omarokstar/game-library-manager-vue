@@ -43,55 +43,63 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    name: "Login",
-    data() {
-      return {
-        email: "",
-        password: "",
-        message: "",
-        messageType: "", 
-      };
-    },
-    methods: {
-      handleLogin() {
-       
-        this.message = "";
-        this.messageType = "";
+  <script setup>
+  import { toast } from 'vue3-toastify';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@/store/userStore';
+
+const email = ref('');
+const password = ref('');
+const message = ref('');
+const messageType = ref('');
+
+const router = useRouter();
+const userStore = useUserStore();
+
+const handleLogin = () => {
+  message.value = '';
+  messageType.value = '';
+
+  if (!email.value || !password.value) {
+    message.value = 'Please fill in all fields.';
+    messageType.value = 'error';
+    return;
+  }
+
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+
+  const user = users.find(
+    (user) => user.email === email.value && user.password === password.value
+  );
+
+  if (!user) {
+    message.value = 'Invalid email or password.';
+    messageType.value = 'error';
+    return;
+  }
+
   
-        if (!this.email || !this.password) {
-          this.message = "Please fill in all fields.";
-          this.messageType = "error";
-          return;
-        }
-  
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-  
-        const user = users.find(
-          (user) => user.email === this.email && user.password === this.password
-        );
-  
-        if (!user) {
-          this.message = "Invalid email or password.";
-          this.messageType = "error";
-          return;
-        }
-  
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-  
-        this.message = "Login successful! Redirecting...";
-        this.messageType = "success";
-  
-        this.email = "";
-        this.password = "";
-        setTimeout(() => {
-          this.$router.push("/all-games");
-        }, 2000);
-      },
-    },
-  };
-  </script>
+  userStore.login(user);
+  toast.success(`👋 Welcome back, ${user.username || 'User'}!`, {
+    timeout: 3000,
+    position: 'top-right',
+  });
+
+  message.value = 'Login successful! Redirecting...';
+  messageType.value = 'success';
+
+  email.value = '';
+  password.value = '';
+
+  setTimeout(() => {
+    router.push('/all-games');
+  }, 2000);
+};
+</script>
+
+
+
   
   <style scoped>
   .login-container {

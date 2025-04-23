@@ -303,7 +303,7 @@ const selectedGame = computed(() => {
   }
 }
 
-/* Transition Animations */
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;

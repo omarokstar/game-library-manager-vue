@@ -22,9 +22,20 @@
       </div>
 
       <div>
-            <router-link to="/login" class="text-decoration-none text-light">
-              <i class="fas fa-user me-3"></i> login
-            </router-link>
+        <div>
+          <div v-if="userStore.isUserLogin">
+          <a @click="logout" class="text-decoration-none text-light" style="cursor: pointer;">
+            <i class="fas fa-user me-3"></i> Logout
+          </a>
+        </div>
+        <div v-else>
+          <router-link to="/login" class="text-decoration-none text-light">
+            <i class="fas fa-user me-3"></i> Login
+          </router-link>
+        </div>
+           
+
+
         <h6 class="text-uppercase">Explore</h6>
         <ul class="list-unstyled">
           <li>
@@ -59,26 +70,27 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { toast } from 'vue3-toastify';
+import { ref, watchEffect } from "vue";
+import { useRouter } from "vue-router";
+import { useUserStore } from '@/store/userStore';
 
-const isSidebarVisible = ref(true);
-const isSmallScreen = ref(false);
+const userStore = useUserStore();
+const router = useRouter();
+const isUserLogin = ref(false);
 
-const toggleSidebar = () => {
-  isSidebarVisible.value = !isSidebarVisible.value;
+const logout = () => {
+  userStore.logout();
+  toast.warning('👋 Logged out successfully. See you next time!');
 };
 
-onMounted(() => {
-  const checkScreen = () => {
-    isSmallScreen.value = window.innerWidth < 768;
-  };
-  checkScreen();
-  window.addEventListener("resize", checkScreen);
-});
+
 </script>
+
 
 <style scoped>
 .sidebar {
